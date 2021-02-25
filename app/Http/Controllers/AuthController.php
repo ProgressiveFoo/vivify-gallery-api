@@ -7,6 +7,8 @@ use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+use function Psy\info;
+
 class AuthController extends Controller
 {
   public function login(Request $request)
@@ -56,5 +58,16 @@ class AuthController extends Controller
     return [
       'token' => $token
     ];
+  }
+
+  public function emailCheck(Request $request)
+  {
+    $data = $request->params;
+	$userCount = User::where('email', $data);
+	if ($userCount->count()) {
+		return response()->json(['message' => false]);
+	} else {
+		return response()->json(['message' => true]);
+	}
   }
 }
