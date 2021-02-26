@@ -1,9 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CommentController;
 use App\Http\Controllers\GalleryController;
-use App\Http\Controllers\ImageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 /*
@@ -36,8 +34,4 @@ Route::post('create-gallery', [ GalleryController::class, 'store' ])->middleware
 Route::post('edit-gallery/:id', [ GalleryController::class, 'update' ])->middleware('auth:api');
 Route::post('delete-gallery/:id', [ GalleryController::class, 'destroy' ])->middleware('auth:api');
 
-//comments
-Route::post('create-comment', [ CommentController::class, 'store' ]);
 
-//image
-Route::post('store-images', [ ImageController::class, 'store' ]);
